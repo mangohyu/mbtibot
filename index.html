@@ -21,13 +21,17 @@
                 <img src="public/images/folder.png" alt="it is a folder">
                 봇도움말
             </li>
-            <li class="guides" id="guides">
+            <li class="우주" id="우주">
                 <img src="public/images/folder.png" alt="it is a folder">
                 우주
             </li>
             <li class="folder" id="guide">
                 <img src="public/images/folder.png" alt="it is a folder">
                 이모티콘샵 (준비중)
+            </li>
+            <li class="folder">
+                <img src="public/images/folder.png" alt="it is a folder">
+                <span id="user">null</span>
             </li>
         </ul>   
     </main>
@@ -56,6 +60,7 @@
 <script  src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script language="javascript">
     $(function(){
+        $('#user').html(getParameters('name'));
         $('#start').click(function(){
             var url = "public/bomb.html";
             $(location).attr('href',url);
@@ -66,7 +71,7 @@
             $(location).attr('href',url);
         });
 
-        $('#guides').click(function(){
+        $('#우주').click(function(){
             var url = "public/guide.html";
             $(location).attr('href',url);
         });
@@ -81,17 +86,29 @@
         // When the user clicks on the button, open the modal 
         btn.onclick = function() {
             modal.style.display = "block";
+            console.log(getParameters('name')); //파라미터를 때옴
         }
         // When the user clicks on <span> (x), close the modal
         span.onclick = function() {
             modal.style.display = "none";
         }
         // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
+        var getParameters = function (paramName) {
+        // 리턴값을 위한 변수 선언
+        var returnValue;
+        // 현재 URL 가져오기
+        var url = location.href;
+        // get 파라미터 값을 가져올 수 있는 ? 를 기점으로 slice 한 후 split 으로 나눔
+        var parameters = (url.slice(url.indexOf('?') + 1, url.length)).split('&');
+        // 나누어진 값의 비교를 통해 paramName 으로 요청된 데이터의 값만 return
+        for (var i = 0; i < parameters.length; i++) {
+            var varName = parameters[i].split('=')[0];
+            if (varName.toUpperCase() == paramName.toUpperCase()) {
+                returnValue = parameters[i].split('=')[1];
+                return decodeURIComponent(returnValue);
             }
         }
+    };
         
     var clockTarget = document.getElementById("clock");
 
