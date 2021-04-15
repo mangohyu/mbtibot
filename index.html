@@ -49,7 +49,7 @@
           <p>[낚시 도움말]</p>
           <p>[도시 도움말]</p>
           <p>[급료 도움말]</p>
-          <p>[급료 도움말2]</p>
+          <p>[급료 도움말]</p>
         </div>
       </div>
 </body>
@@ -61,7 +61,7 @@
             $("#profile").each( function(i, ele){
         //이미 load된 이미지들을 처리하기 위한 코드
             if( ele.src != '' && ele.complete == true && ele.naturalWidth == 0 ){
-                $('#profile').attr('src',urls+getParameters('img'));
+                $('#profile').attr('src',urls+getParameters('img') + "?");
                 $('#user').html(getParameters('name'));;
             }
             //load되지 않은 이미지들은 load와 error 이벤트를 추가해준다
