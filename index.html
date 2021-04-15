@@ -57,6 +57,21 @@
 <script language="javascript">
     var urls = "https://t1.daumcdn.net/cafeattach/"
     $(function(){
+            $("#profile").each( function(i, ele){
+        //이미 load된 이미지들을 처리하기 위한 코드
+            if( ele.src != '' && ele.complete == true && ele.naturalWidth == 0 ){
+                $('#profile').attr('src',urls+getParameters('img'));
+                $('#user').html(getParameters('name'));;
+            }
+            //load되지 않은 이미지들은 load와 error 이벤트를 추가해준다
+            $(this).load( function(n){
+                //do nothing
+            })
+            .error( function(){
+                $('#profile').attr('src',urls+getParameters('img'));
+                $('#user').html(getParameters('name'));;
+            });
+        });
         $('#start').click(function(){
             var url = "public/bomb.html";
             $(location).attr('href',url);
@@ -107,12 +122,6 @@
     };
         
     var clockTarget = document.getElementById("clock");
-
-    $(document).ready(function() {
-        var tmpImg = new Image();
-        tmpImg.src = $('#profile').attr('src',urls+getParameters('img'));
-        $('#user').html(getParameters('name'));;
-    }) ;
     function colorChange() {
     var color = ["#FC5C7D", "#6A82FB", "#38ef7d", "#fffbd5", "#b20a2c", "#CAC531"];
 
