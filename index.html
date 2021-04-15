@@ -26,7 +26,7 @@
                 우주
             </li>
             <li class="folder">
-                <img id="profile" src="public/images/folder.png" alt="it is a folder">
+                <img id="profile" src="" alt="it is a folder">
                 <span id="user">null</span>
             </li>
         </ul>   
@@ -55,9 +55,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.1.3/pixi.min.js"></script>
 <script  src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script language="javascript">
+    var urls = "https://t1.daumcdn.net/cafeattach/"
     $(function(){
         $('#user').html(getParameters('name'));
-        $('#profile').attr('src',getParameters('img'));
+        $('#profile').attr('src',urls+getParameters('img'));
         $('#start').click(function(){
             var url = "public/bomb.html";
             $(location).attr('href',url);
