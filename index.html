@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700&display=swap" rel="stylesheet">
     <!-- <link rel="icon" href="../../favicon.ico"> -->
     <meta charset="utf-8">
     <meta name='viewport' content='width=device-width, initial-scale=1'>
@@ -21,17 +21,22 @@
                 <img src="public/images/folder.png" alt="it is a folder">
                 봇도움말
             </li>
+            <li class="guides" id="guides">
+                <img src="public/images/folder.png" alt="it is a folder">
+                우주
+            </li>
             <li class="folder" id="guide">
                 <img src="public/images/folder.png" alt="it is a folder">
                 이모티콘샵 (준비중)
             </li>
-        </ul>
+        </ul>   
     </main>
     <footer class="toolbar">
         <ul> 
-            <li class="start">
+            <li id="start" class="start">
                 <img src="public/images/starto.png" alt="image in start button">
-                시작</li>
+                시작
+            </li>
             <li class="time" id="clock">오전 11:20</li>
         </ul>
     </footer>
@@ -51,13 +56,18 @@
 <script  src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script language="javascript">
     $(function(){
-        $('.trash').click(function(){
+        $('#start').click(function(){
             var url = "public/bomb.html";
             $(location).attr('href',url);
         });
 
         $('#guide').click(function(){
             var url = "public/kakao.html";
+            $(location).attr('href',url);
+        });
+
+        $('#guides').click(function(){
+            var url = "public/guide.html";
             $(location).attr('href',url);
         });
     });
