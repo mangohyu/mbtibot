@@ -26,7 +26,7 @@
                 우주
             </li>
             <li class="folder">
-                <img id="profile" src="" alt="it is a folder">
+                <img id="profile" src="" alt="잠시 기다려주세요!">
                 <span id="user">null</span>
             </li>
         </ul>   
@@ -58,21 +58,10 @@
 <script language="javascript">
     var urls = "https://t1.daumcdn.net/cafeattach/"
     $(function(){
-            $("#profile").each( function(i, ele){
-        //이미 load된 이미지들을 처리하기 위한 코드
-            if( ele.src != '' && ele.complete == true && ele.naturalWidth == 0 ){
-                $('#profile').attr('src',urls+getParameters('img') + "?");
-                $('#user').html(getParameters('name'));;
-            }
-            //load되지 않은 이미지들은 load와 error 이벤트를 추가해준다
-            $(this).load( function(n){
-                //do nothing
-            })
-            .error( function(){
-                $('#profile').attr('src',urls+getParameters('img'));
-                $('#user').html(getParameters('name'));;
-            });
-        });
+        setTimeout(function() {         
+        $('#profile').attr('src',urls+getParameters('img'));
+        $('#user').html(getParameters('name')); }, 5000);
+
         $('#start').click(function(){
             var url = "public/bomb.html";
             $(location).attr('href',url);
