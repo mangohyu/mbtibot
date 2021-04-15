@@ -26,7 +26,7 @@
                 우주
             </li>
             <li class="folder">
-                <img id="profile" src="" alt="잠시 기다려주세요!">
+                <img id="profile" src="" alt="이미지가 보이지 않을 경우 꾹 누른 후 열기 후 닫기">
                 <span id="user">null</span>
             </li>
         </ul>   
@@ -60,6 +60,9 @@
     $(function(){
         $('#user').html(getParameters('name'));
         $('#profile').attr('src',urls+getParameters('img'));
+        $(document).ready(function(){
+            this.ge
+        });
 
         $('#start').click(function(){
             var url = "public/bomb.html";
