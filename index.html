@@ -13,21 +13,25 @@
 <body oncontextmenu='return false' onselectstart='return false' id="colorCont">
     <main class="desktop">
         <ul>
-            <li class="trash">
+            <li class="trash" style="cursor: pointer;">
                 <img src="public/images/trash.png" alt="the trash" onclick="colorChange()">
                 휴지통
             </li>
-            <li class="folder" id="myBtn">
+            <li class="folder" id="myBtn" style="cursor: pointer;">
                 <img src="public/images/folder.png" alt="it is a folder">
                 봇도움말
             </li>
-            <li class="우주" id="우주">
+            <li class="우주" id="우주" style="cursor: pointer;">
                 <img src="public/images/folder.png" alt="it is a folder">
                 우주
             </li>
-            <li class="folder" id="user_folder">
+            <li class="lotto" id="lotto" style="cursor: pointer;">
+                <img src="public/images/lotto.png" alt="it is a folder">
+                VIP<br/>복권
+            </li>
+            <li class="folder" id="user_folder" style="cursor: pointer;">
                 <img id="profile" src="" alt="이미지가 보이지 않을 경우 꾹 누른 후 열기 후 닫기">
-                <span id="user">null</span>
+                <span id="user"></span>
             </li>
         </ul>   
     </main>
@@ -60,9 +64,6 @@
     $(function(){
         $('#user').html(getParameters('name'));
         $('#profile').attr('src',urls+getParameters('img'));
-        $(document).ready(function(){
-            getParameters('name') == '' ? $('#user_folder').attr('style','display:none;') : ""
-        });
 
         $('#start').click(function(){
             var url = "public/bomb.html";
@@ -71,11 +72,15 @@
 
         $('#guide').click(function(){
             var url = "public/kakao.html";
-            $(location).attr('href',url);
+            alert("준비중입니다!");
         });
 
         $('#우주').click(function(){
-            var url = "public/guide.html";
+            alert("준비중입니다!");
+        });
+
+        $('#lotto').click(function(){
+            var url = "public/lotto.html";
             $(location).attr('href',url);
         });
     });
