@@ -25,7 +25,7 @@
                 <img src="public/images/folder.png" alt="it is a folder">
                 우주
             </li>
-            <li class="folder">
+            <li class="folder" id="user_folder">
                 <img id="profile" src="" alt="이미지가 보이지 않을 경우 꾹 누른 후 열기 후 닫기">
                 <span id="user">null</span>
             </li>
@@ -61,7 +61,7 @@
         $('#user').html(getParameters('name'));
         $('#profile').attr('src',urls+getParameters('img'));
         $(document).ready(function(){
-            this.ge
+            getParameters('name') == '' ? $('#user_folder').attr('style','display:none;') : ""
         });
 
         $('#start').click(function(){
