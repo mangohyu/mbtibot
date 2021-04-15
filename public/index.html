@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700&display=swap" rel="stylesheet">
+    <!-- <link rel="icon" href="../../favicon.ico"> -->
+    <meta charset="utf-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title></title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body oncontextmenu='return false' onselectstart='return false' id="colorCont">
+    <main class="desktop">
+        <ul>
+            <li class="trash">
+                <img src="./images/trash.png" alt="the trash" onclick="colorChange()">
+                휴지통
+            </li>
+            <li class="folder" id="myBtn">
+                <img src="./images/folder.png" alt="it is a folder">
+                우주
+            </li>
+            <li class="folder" id="tvshow">
+                <img src="./images/folder.png" alt="it is a folder">
+                TVSHOW
+            </li>
+        </ul>
+    </main>
+    <footer class="toolbar">
+        <ul> 
+            <li class="start">
+                <img src="./images/starto.png" alt="image in start button">
+                시작</li>
+            <li class="time" id="clock">오전 11:20</li>
+        </ul>
+    </footer>
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>                                                               
+          <p>이것은 모달입니다.</p>
+        </div>
+      </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.1.3/pixi.min.js"></script>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script language="javascript">
+    $(function(){
+        $('.trash').click(function(){
+            var url = "bomb.html";
+            $(location).attr('href',url);
+        });
+
+        $('#tvshow').click(function(){
+            var url = "kakao.html";
+            $(location).attr('href',url);
+        });
+    });
+        // Get the modal
+        var modal = document.getElementById('myModal');
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];                                          
+ 
+        // When the user clicks on the button, open the modal 
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        
+    var clockTarget = document.getElementById("clock");
+
+    function colorChange() {
+    var color = ["#FC5C7D", "#6A82FB", "#38ef7d", "#fffbd5", "#b20a2c", "#CAC531"];
+
+    var num = Math.floor(Math.random() * color.length);
+    var bodyTag = document.getElementById("colorCont");
+    bodyTag.style.backgroundColor = color[num];
+    }
+    function clock() {
+        var date = new Date();
+        // date Object를 받아오고 
+        // var month = date.getMonth();
+        // // 달을 받아옵니다 
+        // var clockDate = date.getDate();
+        // // 몇일인지 받아옵니다 
+        // var day = date.getDay();
+        // // 요일을 받아옵니다. 
+        var week = ['일', '월', '화', '수', '목', '금', '토'];
+        // 요일은 숫자형태로 리턴되기때문에 미리 배열을 만듭니다. 
+        var hours = date.getHours();
+        // 시간을 받아오고 
+        var minutes = date.getMinutes();
+        // 분도 받아옵니다.
+        var seconds = date.getSeconds();
+        // 초까지 받아온후 
+        if(hours > 12){
+        clockTarget .innerText = `오후 ${hours < 10 ? `0${hours}` : hours}:${minutes < 10 ? `0${minutes }`  : minutes }`;
+        }else{
+        clockTarget .innerText = `오전 ${hours < 10 ? `0${hours}` : hours}:${minutes < 10 ? `0${minutes }`  : minutes }`;    
+        }   
+        // 월은 0부터 1월이기때문에 +1일을 해주고 
+        // 시간 분 초는 한자리수이면 시계가 어색해보일까봐 10보다 작으면 앞에0을 붙혀주는 작업을 3항연산으로 했습니다. 
+    }
+
+    function init() {
+        clock();
+    // 최초에 함수를 한번 실행시켜주고 
+        setInterval(clock, 1000);
+    // setInterval이라는 함수로 매초마다 실행을 해줍니다.
+    // setInterval은 첫번째 파라메터는 함수이고 두번째는 시간인데 밀리초단위로 받습니다. 1000 = 1초 
+    }
+    init();
+</script>
+<style>
+  /* The Modal (background) */
+  .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+    
+        /* Modal Content/Box */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 50%; /* Could be more or less, depending on screen size */                          
+        }
+        /* The Close Button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+</style>
+</html>
+
