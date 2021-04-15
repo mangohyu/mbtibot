@@ -25,12 +25,8 @@
                 <img src="public/images/folder.png" alt="it is a folder">
                 우주
             </li>
-            <li class="folder" id="guide">
-                <img src="public/images/folder.png" alt="it is a folder">
-                이모티콘샵 (준비중)
-            </li>
             <li class="folder">
-                <img src="public/images/folder.png" alt="it is a folder">
+                <img id="profile" src="public/images/folder.png" alt="it is a folder">
                 <span id="user">null</span>
             </li>
         </ul>   
@@ -61,6 +57,7 @@
 <script language="javascript">
     $(function(){
         $('#user').html(getParameters('name'));
+        $('#profile').attr('src',getParameters('img'));
         $('#start').click(function(){
             var url = "public/bomb.html";
             $(location).attr('href',url);
