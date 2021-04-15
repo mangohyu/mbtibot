@@ -59,9 +59,8 @@
     var urls = "https://t1.daumcdn.net/cafeattach/"
     $(function(){
         $('#user').html(getParameters('name'));
-        setTimeout(function() {         
-        $('#profile').attr('src',urls+getParameters('img')); }, 5000);
-        
+        $('#profile').attr('src',urls+getParameters('img'));
+
         $('#start').click(function(){
             var url = "public/bomb.html";
             $(location).attr('href',url);
