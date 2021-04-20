@@ -21,19 +21,23 @@
                 <img src="public/images/folder.png" alt="it is a folder">
                 봇도움말
             </li>
-            <li class="우주" id="우주" style="cursor: pointer;">
+            <li class="game" id="game" style="cursor: pointer;">
                 <img src="public/images/folder.png" alt="it is a folder">
-                우주
+                슬롯<br/>게임
             </li>
             <li class="lotto" id="lotto" style="cursor: pointer;">
                 <img src="public/images/lotto.png" alt="it is a folder">
                 VIP<br/>복권
             </li>
-            <li class="folder" id="user_folder" style="cursor: pointer;">
+            <li class="tooltip" id="tooltip" style="cursor: pointer;">
+                <img src="public/images/folder.png" alt="it is a folder">
+                툴팁
+            </li>
+            <!-- <li class="folder" id="user_folder" style="cursor: pointer;">
                 <img id="profile" src="" alt="이미지가 보이지 않을 경우 꾹 누른 후 열기 후 닫기">
                 <span id="user"></span>
-            </li>
-        </ul>   
+            </li> -->
+        </ul>     
     </main>
     <footer class="toolbar">
         <ul> 
@@ -75,13 +79,18 @@
             alert("준비중입니다!");
         });
 
-        $('#우주').click(function(){
+        $('#game').click(function(){
             var url = "public/solt.html";
             $(location).attr('href',url);
         });
 
         $('#lotto').click(function(){
             var url = "public/lotto.html";
+            $(location).attr('href',url);
+        });
+
+        $('#tooltip').click(function(){
+            var url = "public/tooltip.html";
             $(location).attr('href',url);
         });
     });
