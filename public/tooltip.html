@@ -1,18 +1,24 @@
 <html>
-
 <body>
-    Hi
+
 </body>
 
 </html>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.3.8/pixi.min.js"></script>
 <script>
+const xhr = new XMLHttpRequest();
+const url = 'https://mangohyu.github.io/mbtibot/public/images/';
+
+xhr.open('GET', url);
+xhr.onreadystatechange = someHandler;
+xhr.send();
+
  const app = new PIXI.Application({ backgroundColor: 0x1099bb });
 document.body.appendChild(app.view);
 
 // create a texture from an image path
-const texture = PIXI.Texture.from('public/images/nfolder.png');
+const texture = PIXI.Texture.from('public/images/dd.svg');
 
 // Scale mode for pixelation
 texture.baseTexture.scaleMode = PIXI.SCALE_MODES.NEAREST;
@@ -38,7 +44,7 @@ function createBunny(x, y) {
     bunny.anchor.set(0.5);
 
     // make it a bit bigger, so it's easier to grab
-    bunny.scale.set(3);
+    bunny.scale.set(1);
 
     // setup events for mouse + touch using
     // the pointer events
