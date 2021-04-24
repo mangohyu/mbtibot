@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700&display=swap" rel="stylesheet">
     <!-- <link rel="icon" href="../../favicon.ico"> -->
     <meta charset="utf-8">
     <meta name='viewport' content='width=device-width, initial-scale=1'>
@@ -10,6 +11,7 @@
     <title></title>
     <link rel="stylesheet" href="public/styles/style.css">
 </head>
+
 <body oncontextmenu='return false' onselectstart='return false' id="colorCont">
     <main class="desktop">
         <ul>
@@ -21,6 +23,14 @@
                 <img src="public/images/nfolder.png" alt="it is a nfolder">
                 봇도움말
             </li>
+            <li class="game" id="game" style="cursor: pointer;">
+                <img src="public/images/nslot.png" alt="it is a nfolder">
+                슬롯<br />게임
+            </li>
+            <li class="lotto" id="lotto" style="cursor: pointer;">
+                <img src="public/images/lotto.png" alt="it is a folder">
+                로또<br />복권
+            </li>
             <li class="tooltip" id="tooltip" style="cursor: pointer;">
                 <img src="public/images/nfolder.png" alt="it is a nfolder">
                 툴팁
@@ -29,10 +39,10 @@
                 <img id="profile" src="" alt="이미지가 보이지 않을 경우 꾹 누른 후 열기 후 닫기">
                 <span id="user"></span>
             </li>
-        </ul>     
+        </ul>
     </main>
     <footer class="toolbar">
-        <ul> 
+        <ul>
             <li id="start" class="start">
                 <img src="public/images/starto.png" alt="image in start button">
                 시작
@@ -43,70 +53,67 @@
     <div id="myModal" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
-          <span class="close">&times;</span>                                                               
-          <p>게임 폴더</p>
-        <li class="game" id="game" style="cursor: pointer;">
-            <img src="public/images/nslot.png" alt="it is a nfolder">
-            슬롯<br/>게임
-        </li>
-        <li class="lotto" id="lotto" style="cursor: pointer;">
-            <img src="public/images/lotto.png" alt="it is a folder">
-            로또<br/>복권
-        </li>
+            <span class="close">&times;</span>
+            <p>도움말 폴더</p>
+            <p>[농사 도움말]</p>
+            <p>[낚시 도움말]</p>
+            <p>[도시 도움말]</p>
+            <p>[급료 도움말]</p>
+            <p>[급료 도움말]</p>
         </div>
-      </div>
+    </div>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.1.3/pixi.min.js"></script>
-<script  src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script language="javascript">
     var urls = "http://t1.daumcdn.net/cafeattach/"
-    $(function(){
+    $(function () {
         $('#user').html(getParameters('name'));
-        $('#profile').attr('src',urls+getParameters('img'));
+        $('#profile').attr('src', urls + getParameters('img'));
 
-        $('#start').click(function(){
+        $('#start').click(function () {
             var url = "public/bomb.html";
-            $(location).attr('href',url);
+            $(location).attr('href', url);
         });
 
-        $('#guide').click(function(){
+        $('#guide').click(function () {
             var url = "public/kakao.html";
             alert("준비중입니다!");
         });
 
-        $('#game').click(function(){
+        $('#game').click(function () {
             var url = "public/solt.html";
-            $(location).attr('href',url);
+            $(location).attr('href', url);
         });
 
-        $('#lotto').click(function(){
+        $('#lotto').click(function () {
             var url = "public/lotto.html";
-            $(location).attr('href',url);
+            $(location).attr('href', url);
         });
 
-        $('#tooltip').click(function(){
+        $('#tooltip').click(function () {
             var url = "public/tooltip.html";
-            $(location).attr('href',url);
+            $(location).attr('href', url);
         });
     });
-        // Get the modal
-        var modal = document.getElementById('myModal');
-        // Get the button that opens the modal
-        var btn = document.getElementById("myBtn");
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];                                          
- 
-        // When the user clicks on the button, open the modal 
-        btn.onclick = function() {
-            modal.style.display = "block";
-            console.log(getParameters('name')); //파라미터를 때옴
-        }
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function() {
-            modal.style.display = "none";
-        }
-        // When the user clicks anywhere outside of the modal, close it
-        var getParameters = function (paramName) {
+    // Get the modal
+    var modal = document.getElementById('myModal');
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on the button, open the modal 
+    btn.onclick = function () {
+        modal.style.display = "block";
+        console.log(getParameters('name')); //파라미터를 때옴
+    }
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+    // When the user clicks anywhere outside of the modal, close it
+    var getParameters = function (paramName) {
         // 리턴값을 위한 변수 선언
         var returnValue;
         // 현재 URL 가져오기
@@ -122,14 +129,14 @@
             }
         }
     };
-        
+
     var clockTarget = document.getElementById("clock");
     function colorChange() {
-    var color = ["#FC5C7D", "#6A82FB", "#38ef7d", "#fffbd5", "#b20a2c", "#CAC531"];
+        var color = ["#FC5C7D", "#6A82FB", "#38ef7d", "#fffbd5", "#b20a2c", "#CAC531"];
 
-    var num = Math.floor(Math.random() * color.length);
-    var bodyTag = document.getElementById("colorCont");
-    bodyTag.style.backgroundColor = color[num];
+        var num = Math.floor(Math.random() * color.length);
+        var bodyTag = document.getElementById("colorCont");
+        bodyTag.style.backgroundColor = color[num];
     }
     function clock() {
         var date = new Date();
@@ -148,46 +155,58 @@
         // 분도 받아옵니다.
         var seconds = date.getSeconds();
         // 초까지 받아온후 
-        if(hours > 12){
-        clockTarget .innerText = `오후 ${hours < 10 ? `0${hours}` : hours}:${minutes < 10 ? `0${minutes }`  : minutes }`;
-        }else{
-        clockTarget .innerText = `오전 ${hours < 10 ? `0${hours}` : hours}:${minutes < 10 ? `0${minutes }`  : minutes }`;    
-        }   
+        if (hours > 12) {
+            clockTarget.innerText = `오후 ${hours < 10 ? `0${hours}` : hours}:${minutes < 10 ? `0${minutes}` : minutes}`;
+        } else {
+            clockTarget.innerText = `오전 ${hours < 10 ? `0${hours}` : hours}:${minutes < 10 ? `0${minutes}` : minutes}`;
+        }
         // 월은 0부터 1월이기때문에 +1일을 해주고 
         // 시간 분 초는 한자리수이면 시계가 어색해보일까봐 10보다 작으면 앞에0을 붙혀주는 작업을 3항연산으로 했습니다. 
     }
 
     function init() {
         clock();
-    // 최초에 함수를 한번 실행시켜주고 
+        // 최초에 함수를 한번 실행시켜주고 
         setInterval(clock, 1000);
-    // setInterval이라는 함수로 매초마다 실행을 해줍니다.
-    // setInterval은 첫번째 파라메터는 함수이고 두번째는 시간인데 밀리초단위로 받습니다. 1000 = 1초 
+        // setInterval이라는 함수로 매초마다 실행을 해줍니다.
+        // setInterval은 첫번째 파라메터는 함수이고 두번째는 시간인데 밀리초단위로 받습니다. 1000 = 1초 
     }
     init();
 </script>
 <style>
-  /* The Modal (background) */
+    /* The Modal (background) */
     .modal {
-        display: none; /* Hidden by default */
-        position: fixed; /* Stay in place */
-        z-index: 1; /* Sit on top */
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        /* Stay in place */
+        z-index: 1;
+        /* Sit on top */
         left: 0;
         top: 0;
-        width: 100%; /* Full width */
-        height: 100%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
-        background-color: rgb(0,0,0); /* Fallback color */
-        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        width: 100%;
+        /* Full width */
+        height: 100%;
+        /* Full height */
+        overflow: auto;
+        /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0);
+        /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4);
+        /* Black w/ opacity */
     }
+
     /* Modal Content/Box */
     .modal-content {
         background-color: #fefefe;
-        margin: 15% auto; /* 15% from the top and centered */
+        margin: 15% auto;
+        /* 15% from the top and centered */
         padding: 20px;
         border: 1px solid #888;
-        width: 50%; /* Could be more or less, depending on screen size */                          
+        width: 50%;
+        /* Could be more or less, depending on screen size */
     }
+
     /* The Close Button */
     .close {
         color: #aaa;
@@ -195,6 +214,7 @@
         font-size: 28px;
         font-weight: bold;
     }
+
     .close:hover,
     .close:focus {
         color: black;
@@ -202,5 +222,5 @@
         cursor: pointer;
     }
 </style>
-</html>
 
+</html>
