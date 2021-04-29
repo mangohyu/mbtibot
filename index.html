@@ -96,9 +96,15 @@
 <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script language="javascript">
     var urls = "http://t1.daumcdn.net/cafeattach/"
+    var item1 = "";
+    var item2 = "";
+    var item3 = "";
+    var item4 = "";
+    var item5 = "";
     $(function () {
         $('#user').html(getParameters('name').split(' ')[0]+"님의 정보");
         $('#profile').attr('src', urls + getParameters('img'));
+        
         
         $('#start').click(function () {
             var url = "public/bomb.html";
@@ -122,7 +128,12 @@
 
         $('#tooltip').click(function () {
             var url = "public/tooltip.html";
-            $(location).attr('href', url);
+            item1 = getParameters('item1');
+            item2 = getParameters('item2');
+            item3 = getParameters('item3');
+            item4 = getParameters('item4');
+            item5 = getParameters('item5');+
+            $(location).attr('href', url + '?item1=' + item1 + '&item2=' + item2 + '&item3=' + item3 + '&item4=' + item4 + '&item5=' + item5);
         });
     });
     // Get the modal

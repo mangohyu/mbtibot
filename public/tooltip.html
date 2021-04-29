@@ -1,17 +1,47 @@
 <html>
 <body>
+<!-- <img src="" id="item1" alt="the ntrash" >
+<img src="" id="item2" alt="the ntrash" >
+<img src="" id="item3" alt="the ntrash" >
+<img src="" id="item4" alt="the ntrash" >
+<img src="" id="item5" alt="the ntrash" > -->
 </body>
 
 </html>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.3.8/pixi.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
+var urls = "http://t1.daumcdn.net/cafeattach/"
+$(function () {
+    // $('#item1').attr('src', urls + getParameters('item1'));
+    // $('#item2').attr('src', urls + getParameters('item2'));
+    // $('#item3').attr('src', urls + getParameters('item3'));
+    // $('#item4').attr('src', urls + getParameters('item4'));
+    // $('#item5').attr('src', urls + getParameters('item5'));
+});
+var getParameters = function (paramName) {
+    // 리턴값을 위한 변수 선언
+    var returnValue;
+    // 현재 URL 가져오기
+    var url = location.href;
+    // get 파라미터 값을 가져올 수 있는 ? 를 기점으로 slice 한 후 split 으로 나눔
+    var parameters = (url.slice(url.indexOf('?') + 1, url.length)).split('&');
+    // 나누어진 값의 비교를 통해 paramName 으로 요청된 데이터의 값만 return
+    for (var i = 0; i < parameters.length; i++) {
+        var varName = parameters[i].split('=')[0];
+        if (varName.toUpperCase() == paramName.toUpperCase()) {
+            returnValue = parameters[i].split('=')[1];
+            return decodeURIComponent(returnValue);
+        }
+    }
+};
 var url = "https://raw.githubusercontent.com/mangohyu/mbtibot/master"
  const app = new PIXI.Application({ backgroundColor: 0x1099bb });
 document.body.appendChild(app.view);
 
 // create a texture from an image path
-const texture = PIXI.Texture.from(url+'/public/images/nfolder.png');
+const texture = PIXI.Texture.from(urls + getParameters('item1'));
 
 // Scale mode for pixelation
 texture.baseTexture.scaleMode = PIXI.SCALE_MODES.NEAREST;
