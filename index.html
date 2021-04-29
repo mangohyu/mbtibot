@@ -96,7 +96,7 @@
 <script language="javascript">
     var urls = "http://t1.daumcdn.net/cafeattach/"
     $(function () {
-        $('#user').html(getParameters('name'));
+        $('#user').html(getParameters('name').split(' ')[0]);
         $('#profile').attr('src', urls + getParameters('img'));
 
         $('#start').click(function () {
