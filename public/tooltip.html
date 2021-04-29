@@ -1,35 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700&display=swap" rel="stylesheet">
-    <!-- <link rel="icon" href="../../favicon.ico"> -->
-    <meta charset="utf-8">
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <title></title>
-    <link rel="stylesheet" href="public/styles/style.css">
-</head>
+<html>
 <body>
-<img src="" id="item1" alt="the ntrash" >
+<!-- <img src="" id="item1" alt="the ntrash" >
 <img src="" id="item2" alt="the ntrash" >
 <img src="" id="item3" alt="the ntrash" >
 <img src="" id="item4" alt="the ntrash" >
-<img src="" id="item5" alt="the ntrash" >
+<img src="" id="item5" alt="the ntrash" > -->
 </body>
 
+</html>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.3.8/pixi.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script language="javascript"> 
-var urls = "https://t1.daumcdn.net/cafeattach/"
-$(function () {
-    $('#item1').attr('src', urls + getParameters('item1'));
-    $('#item2').attr('src', urls + getParameters('item2'));
-    $('#item3').attr('src', urls + getParameters('item3'));
-    $('#item4').attr('src', urls + getParameters('item4'));
-    $('#item5').attr('src', urls + getParameters('item5'));
-});
+<script>
+// var urls = "http://t1.daumcdn.net/cafeattach/"
+// $(function () {
+//     $('#item1').attr('src', urls + getParameters('item1'));
+//     $('#item2').attr('src', urls + getParameters('item2'));
+//     $('#item3').attr('src', urls + getParameters('item3'));
+//     $('#item4').attr('src', urls + getParameters('item4'));
+//     $('#item5').attr('src', urls + getParameters('item5'));
+// });
 var getParameters = function (paramName) {
     // 리턴값을 위한 변수 선언
     var returnValue;
@@ -52,7 +42,7 @@ var url = "https://raw.githubusercontent.com/mangohyu/mbtibot/master"
 document.body.appendChild(app.view);
 
 // create a texture from an image path
-const texture = PIXI.Texture.from(urls + getParameters('item1'));
+const texture = PIXI.Texture.from(url+'/public/images/nfolder.png');
 
 // Scale mode for pixelation
 texture.baseTexture.scaleMode = PIXI.SCALE_MODES.NEAREST;
@@ -142,5 +132,3 @@ body{
  background-color: #1099BB;
 }
 </style>
-
-</html>
