@@ -188,7 +188,9 @@ body {
 .desktop {
   width: 100vw;
   padding: 10px; }
-
+.desktop_item{
+  display: flex;
+}
 .desktop ul li {
   width: 60px;
   text-align: center;
