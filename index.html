@@ -3,6 +3,7 @@
 
 <head>
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <!-- <link rel="icon" href="../../favicon.ico"> -->
     <meta charset="utf-8">
     <meta name='viewport' content='width=device-width, initial-scale=1'>
@@ -82,7 +83,6 @@
         <!-- Modal content -->
         <div class="modal-content">
             <span class="close">&times;</span>
-            <p>도움말 폴더</p>
             <iframe style="display:block; width: 47vw; height: 25vh" src="http://ko.mbti.wikidok.net/wp-d/60afd3a75ab6d70c1e8a4852"></iframe>
         </div>
     </div>
@@ -98,9 +98,12 @@
     var item4 = "";
     var item5 = "";
     $(function () {
+        if(getParameters('name') != undefined){
         $('#user').html(getParameters('name')+"님의 정보");
         $('#profile').attr('src', urls + getParameters('img'));
-        
+        }else{
+        $('#user').html("잘못된 접근")
+        }
         
         $('#start').click(function () {
             var url = "public/bomb.html";
