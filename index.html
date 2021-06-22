@@ -88,7 +88,8 @@
     </div>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.3.8/pixi.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script language="javascript">
     var urls = "http://t1.daumcdn.net/cafeattach/"
@@ -98,6 +99,7 @@
     var item4 = "";
     var item5 = "";
     $(function () {
+        $( "#cook" ).draggable();
         if(getParameters('name') != undefined){
         $('#user').html(getParameters('name')+"님의 정보");
         $('#profile').attr('src', urls + getParameters('img'));
