@@ -33,7 +33,7 @@
             </li>
             <li class="tooltip" id="tooltip" style="cursor: pointer;">
                 <img src="public/images/nfolder.png" alt="it is a nfolder">
-                툴팁
+                신비한<br/>폴더
             </li>
             <li class="folder" id="user_folder" style="cursor: pointer;">
                 <img id="profile" src="" alt="Error" onerror="this.src='public/images/warning.png';">
@@ -41,23 +41,23 @@
             </li>
         </ul>
         <ul>
-            <li class="trash" style="cursor: pointer;">
+            <li class="trash" id="cook" style="cursor: pointer;">
                 <img src="public/images/boiling.png" alt="the ntrash" >
                 요리
             </li>
-            <li class="folder" id="myBtn" style="cursor: pointer;">
+            <li class="folder" name="test" style="cursor: pointer;">
                 <img src="public/images/barrier.png" alt="it is a nfolder">
                 공사중
             </li>
-            <li class="game" id="game" style="cursor: pointer;">
+            <li class="game" name="test" style="cursor: pointer;">
                 <img src="public/images/barrier.png" alt="it is a nfolder">
                 공사중
             </li>
-            <li class="lotto" id="lotto" style="cursor: pointer;">
+            <li class="lotto" name="test" style="cursor: pointer;">
                 <img src="public/images/barrier.png" alt="it is a folder">
                 공사중
             </li>
-            <li class="tooltip" id="tooltip" style="cursor: pointer;">
+            <li class="tooltip" name="test" style="cursor: pointer;">
                 <img src="public/images/barrier.png" alt="it is a nfolder">
                 공사중
             </li>
@@ -83,11 +83,7 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <p>도움말 폴더</p>
-            <p>[농사 도움말]</p>
-            <p>[낚시 도움말]</p>
-            <p>[도시 도움말]</p>
-            <p>[급료 도움말]</p>
-            <p>[급료 도움말]</p>
+            <iframe style="display:block; height: 100vh" src="http://ko.mbti.wikidok.net/wp-d/60afd3a75ab6d70c1e8a4852"></iframe>
         </div>
     </div>
 </body>
@@ -111,7 +107,7 @@
             $(location).attr('href', url);
         });
 
-        $('#guide').click(function () {
+        $('#guide, #cook, [name="test"]').click(function () {
             var url = "public/kakao.html";
             alert("준비중입니다!");
         });
