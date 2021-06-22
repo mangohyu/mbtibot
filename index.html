@@ -88,7 +88,9 @@
     </div>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.3.8/pixi.min.js"></script>
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="http://code.jquery.com/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.8.17/jquery-ui.min.js"></script>
+<script src="jquery.ui.touch-punch.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script language="javascript">
@@ -99,40 +101,6 @@
     var item4 = "";
     var item5 = "";
     $(function () {
-        var nav_ul_isclick = false;
-        var nav_standard = 0;
-        var nav_moving = 0;
-        var nav_origin = 0;
-        $('li').on({
-            "touchstart mousedown" : function(e_d) {
-                nav_ul_isclick = true;
-                nav_origin = $(this).offset().left;
-            },
-            "touchstart" : function(e_d) {
-                nav_standard = e_d.originalEvent.touches[0].screenX;
-            },
-            "mousedown" : function(e_d) {
-                nav_standard = e_d.pageX;
-            },
-            "touchmove" : function(e_m) {
-                e_m.preventDefault();
-                if(nav_ul_isclick) {
-                    nav_moving = e_m.originalEvent.touches[0].screenX - nav_standard;
-                    $(this).css('transform','translateX('+(nav_origin+nav_moving)+'px)');}
-            },
-            "mousemove" : function(e_m) {
-                if(nav_ul_isclick) {
-                    nav_moving = e_m.pageX - nav_standard;
-                    $(this).css('transform','translateX('+(nav_origin+nav_moving)+'px)');}
-            },
-            "touchend mouseup mouseout" : function(e_u) {
-                nav_ul_isclick = false;
-                if($(this).offset().left > 0) {
-                    $(this).css('transform','translateX(0px)');}
-                else if($(this).offset().left < -$(this).width()) {
-                    $(this).css('transform','translateX('+(-$(this).width())+'px)');}
-            }
-        });
         $("#user_folder,#tooltip,#lotto,#myBtn,#game,#trash,#cook").draggable();
         if(getParameters('name') != undefined){
         $('#user').html(getParameters('name')+"님의 정보");
