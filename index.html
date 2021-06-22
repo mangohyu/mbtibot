@@ -73,7 +73,7 @@
             </li>
             <li>
                 <a href="javascript:;" id="kakao-link-btn">
-                <img src="http://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_small.png" width="10px" />
+                <img src="//developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_small.png" width="10px" />
                 </a>
             </li>
             <li class="time" id="clock">오전 11:20</li>
@@ -99,6 +99,40 @@
     var item4 = "";
     var item5 = "";
     $(function () {
+        var nav_ul_isclick = false;
+        var nav_standard = 0;
+        var nav_moving = 0;
+        var nav_origin = 0;
+        $('li').on({
+            "touchstart mousedown" : function(e_d) {
+                nav_ul_isclick = true;
+                nav_origin = $(this).offset().left;
+            },
+            "touchstart" : function(e_d) {
+                nav_standard = e_d.originalEvent.touches[0].screenX;
+            },
+            "mousedown" : function(e_d) {
+                nav_standard = e_d.pageX;
+            },
+            "touchmove" : function(e_m) {
+                e_m.preventDefault();
+                if(nav_ul_isclick) {
+                    nav_moving = e_m.originalEvent.touches[0].screenX - nav_standard;
+                    $(this).css('transform','translateX('+(nav_origin+nav_moving)+'px)');}
+            },
+            "mousemove" : function(e_m) {
+                if(nav_ul_isclick) {
+                    nav_moving = e_m.pageX - nav_standard;
+                    $(this).css('transform','translateX('+(nav_origin+nav_moving)+'px)');}
+            },
+            "touchend mouseup mouseout" : function(e_u) {
+                nav_ul_isclick = false;
+                if($(this).offset().left > 0) {
+                    $(this).css('transform','translateX(0px)');}
+                else if($(this).offset().left < -$(this).width()) {
+                    $(this).css('transform','translateX('+(-$(this).width())+'px)');}
+            }
+        });
         $("#user_folder,#tooltip,#lotto,#myBtn,#game,#trash,#cook").draggable();
         if(getParameters('name') != undefined){
         $('#user').html(getParameters('name')+"님의 정보");
