@@ -3,7 +3,6 @@
 
 <head>
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <!-- <link rel="icon" href="../../favicon.ico"> -->
     <meta charset="utf-8">
     <meta name='viewport' content='width=device-width, initial-scale=1'>
@@ -11,12 +10,13 @@
     <meta name="keywords" content="">
     <title></title>
     <link rel="stylesheet" href="public/styles/style.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 <body oncontextmenu='return false' onselectstart='return false' id="colorCont">
     <main class="desktop">
     <div class="desktop_item">
         <ul>
-            <li class="trash" style="cursor: pointer;">
+            <li class="trash" id="trash" style="cursor: pointer;">
                 <img src="public/images/ntrash.png" alt="the ntrash" onclick="colorChange()">
                 휴지통
             </li>
@@ -99,7 +99,7 @@
     var item4 = "";
     var item5 = "";
     $(function () {
-        $( "#cook" ).draggable();
+        $("#user_folder,#tooltip,#lotto,#myBtn,#game,#trash,#cook").draggable();
         if(getParameters('name') != undefined){
         $('#user').html(getParameters('name')+"님의 정보");
         $('#profile').attr('src', urls + getParameters('img'));
