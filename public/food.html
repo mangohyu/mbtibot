@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700&display=swap" rel="stylesheet">
     <!-- <link rel="icon" href="../../favicon.ico"> -->
@@ -9,7 +8,7 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
     <title></title>
-    <link rel="stylesheet" href="public/styles/style.css">
+    <link rel="stylesheet" href="./styles/style.css">
     <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
 </head>
 <body oncontextmenu='return false' onselectstart='return false' id="colorCont">
@@ -18,77 +17,27 @@
         <ul>
         <div id="trash">
             <li class="trash"  style="cursor: pointer;">
-                <img src="public/images/ntrash.png" alt="the ntrash" onclick="colorChange()">
+                <img src="./images/ntrash.png" alt="the ntrash" onclick="colorChange()">
                 휴지통
             </li>
         </div>
         <div id="myBtn">
             <li class="folder" style="cursor: pointer;">
-                <img src="public/images/nfolder.png" alt="it is a nfolder">
+                <img src="./images/nfolder.png" alt="it is a nfolder">
                 도움말
-            </li>
-        </div>
-        <div id="game">
-            <li class="game" style="cursor: pointer;">
-                <img src="public/images/nslot.png" alt="it is a nfolder">
-                슬롯<br />게임
-            </li>
-        </div>
-        <div id="lotto">
-            <li class="lotto"  style="cursor: pointer;">
-                <img src="public/images/lotto.png" alt="it is a folder">
-                로또<br />복권
-            </li>
-        </div>
-        <div id="tooltip">
-            <li class="tooltip"  style="cursor: pointer;">
-                <img src="public/images/nfolder.png" alt="it is a nfolder">
-                신비한<br/>폴더
-            </li>
-        </div>
-        <div id="user_folder">
-            <li class="folder"  style="cursor: pointer;">
-                <img id="profile" src="" alt="Error" onerror="this.src='public/images/warning.png';">
-                <span id="user"></span>
             </li>
         </div>
         </ul>
         <ul>
-        <div id="cook">
-            <li class="trash"  style="cursor: pointer;">
-                <img src="public/images/boiling.png" alt="the ntrash" >
-                요리
-            </li>
-        </div>
-            <li class="folder" name="test" style="cursor: pointer;">
-                <img src="public/images/barrier.png" alt="it is a nfolder">
-                공사중
-            </li>
-            <li class="game" name="test" style="cursor: pointer;">
-                <img src="public/images/barrier.png" alt="it is a nfolder">
-                공사중
-            </li>
-            <li class="lotto" name="test" style="cursor: pointer;">
-                <img src="public/images/barrier.png" alt="it is a folder">
-                공사중
-            </li>
-            <li class="tooltip" name="test" style="cursor: pointer;">
-                <img src="public/images/barrier.png" alt="it is a nfolder">
-                공사중
-            </li>
+
         </ul>
     </div>
     </main>
     <footer class="toolbar">
         <ul>
             <li id="start" class="start">
-                <img src="public/images/starto.png" alt="image in start button">
+                <img src="./images/starto.png" alt="image in start button">
                 시작
-            </li>
-            <li>
-                <a href="javascript:;" id="kakao-link-btn">
-                <img src="//developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_small.png" width="10px" />
-                </a>
             </li>
             <li class="time" id="clock">오전 11:20</li>
         </ul>
@@ -101,71 +50,29 @@
         </div>
     </div>
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.3.8/pixi.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="js/draganddrop.js"></script> -->
-<script src="js/jquery.dad.js"></script>
-<script src="js/jquery.dad.min.js"></script>
-<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script src="/js/jquery.dad.js"></script>
+<script src="/js/jquery.dad.min.js"></script>
 <script language="javascript">
-    
     var urls = "http://t1.daumcdn.net/cafeattach/"
-    var item1 = "";
-    var item2 = "";
-    var item3 = "";
-    var item4 = "";
-    var item5 = "";
+    if(getParameters('item1') != undefined){
+        var item1 = urls + getParameters('item1')
+        var item2 = urls + getParameters('item2')
+        var item3 = urls + getParameters('item3')
+        var item4 = urls + getParameters('item4')
+        var item5 = urls + getParameters('item5')
+            $('#trash').attr('src', item1);
+        }else{
+            $('#user').html("잘못된 접근")
+    }
     $(function () {
         $('#user_folder,#tooltip,#lotto,#myBtn,#game,#trash,#cook').dad({
             draggable: "#user_folder,#tooltip,#lotto,#myBtn,#game,#trash,#cook"
-});
+        });
         // $("#user_folder,#tooltip,#lotto,#myBtn,#game,#trash,#cook").draggable();
-        if(getParameters('name') != undefined){
-            $('#user').html(getParameters('name')+"님의 정보");
-            $('#profile').attr('src', urls + getParameters('img'));
-        }else{
-            $('#user').html("잘못된 접근")
-        }
         
         $('#start').click(function () {
-            var url = "public/bomb.html";
-            $(location).attr('href', url);
-        });
 
-        $('#cook').click(function () {
-            var url = "public/food.html";
-            item1 = getParameters('item1');
-            item2 = getParameters('item2');
-            item3 = getParameters('item3');
-            item4 = getParameters('item4');
-            item5 = getParameters('item5');+
-            $(location).attr('href', url + '?item1=' + item1 + '&item2=' + item2 + '&item3=' + item3 + '&item4=' + item4 + '&item5=' + item5);
-        });
-
-        $('#guide, [name="test"]').click(function () {
-            var url = "public/kakao.html";
-            alert("준비중입니다!");
-        });
-
-        $('#game').click(function () {
-            var url = "public/solt.html";
-            $(location).attr('href', url);
-        });
-
-        $('#lotto').click(function () {
-            var url = "public/lotto.html";
-            $(location).attr('href', url);
-        });
-
-        $('#tooltip').click(function () {
-            var url = "public/tooltip.html";
-            item1 = getParameters('item1');
-            item2 = getParameters('item2');
-            item3 = getParameters('item3');
-            item4 = getParameters('item4');
-            item5 = getParameters('item5');+
-            $(location).attr('href', url + '?item1=' + item1 + '&item2=' + item2 + '&item3=' + item3 + '&item4=' + item4 + '&item5=' + item5);
         });
     });
     // Get the modal
@@ -205,19 +112,12 @@
     var clockTarget = document.getElementById("clock");
     function colorChange() {
         var color = ["#FC5C7D", "#6A82FB", "#38ef7d", "#fffbd5", "#b20a2c", "#CAC531"];
-
         var num = Math.floor(Math.random() * color.length);
         var bodyTag = document.getElementById("colorCont");
         bodyTag.style.backgroundColor = color[num];
     }
     function clock() {
         var date = new Date();
-        // date Object를 받아오고 
-        // var month = date.getMonth();
-        // // 달을 받아옵니다 
-        // var clockDate = date.getDate();
-        // // 몇일인지 받아옵니다 
-        // var day = date.getDay();
         // // 요일을 받아옵니다. 
         var week = ['일', '월', '화', '수', '목', '금', '토'];
         // 요일은 숫자형태로 리턴되기때문에 미리 배열을 만듭니다. 
@@ -245,40 +145,6 @@
     }
     init();
 </script>
-<script type="text/javascript">
-    //<![CDATA[
-      // // 사용할 앱의 JavaScript 키를 설정해 주세요.
-      Kakao.init('d14d05b002e5347265b1112294701777');
-      // // 카카오링크 버튼을 생성합니다. 처음 한번만 호출하면 됩니다.
-      Kakao.Link.createDefaultButton({
-        container: '#kakao-link-btn',
-        objectType: 'feed',
-        content: {
-          title: document.title,
-          description: '내용, 주로 해시태그',
-          imageUrl: document.images[0].src,
-          link: {
-            webUrl: document.location.href,
-            mobileWebUrl: document.location.href
-          }
-        },
-        social: {
-          likeCount: 286,
-          commentCount: 45,
-          sharedCount: 845
-        },
-        buttons: [
-          {
-            title: 'Open!',
-            link: {
-              mobileWebUrl: document.location.href,
-              webUrl: document.location.href
-            }
-          }  
-        ]
-      });
-    //]]>
-  </script> 
 
 <style>
     /* The Modal (background) */
