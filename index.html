@@ -10,42 +10,56 @@
     <meta name="keywords" content="">
     <title></title>
     <link rel="stylesheet" href="public/styles/style.css">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
 </head>
 <body oncontextmenu='return false' onselectstart='return false' id="colorCont">
     <main class="desktop">
     <div class="desktop_item">
         <ul>
-            <li class="trash" id="trash" style="cursor: pointer;">
+        <div id="trash">
+            <li class="trash"  style="cursor: pointer;">
                 <img src="public/images/ntrash.png" alt="the ntrash" onclick="colorChange()">
                 휴지통
             </li>
-            <li class="folder" id="myBtn" style="cursor: pointer;">
+        </div>
+        <div id="myBtn">
+            <li class="folder" style="cursor: pointer;">
                 <img src="public/images/nfolder.png" alt="it is a nfolder">
                 도움말
             </li>
-            <li class="game" id="game" style="cursor: pointer;">
+        </div>
+        <div id="game">
+            <li class="game" style="cursor: pointer;">
                 <img src="public/images/nslot.png" alt="it is a nfolder">
                 슬롯<br />게임
             </li>
-            <li class="lotto" id="lotto" style="cursor: pointer;">
+        </div>
+        <div id="lotto">
+            <li class="lotto"  style="cursor: pointer;">
                 <img src="public/images/lotto.png" alt="it is a folder">
                 로또<br />복권
             </li>
-            <li class="tooltip" id="tooltip" style="cursor: pointer;">
+        </div>
+        <div id="tooltip">
+            <li class="tooltip"  style="cursor: pointer;">
                 <img src="public/images/nfolder.png" alt="it is a nfolder">
                 신비한<br/>폴더
             </li>
-            <li class="folder" id="user_folder" style="cursor: pointer;">
+        </div>
+        <div id="user_folder">
+            <li class="folder"  style="cursor: pointer;">
                 <img id="profile" src="" alt="Error" onerror="this.src='public/images/warning.png';">
                 <span id="user"></span>
             </li>
+        </div>
         </ul>
         <ul>
-            <li class="trash" id="cook" style="cursor: pointer;">
+        <div id="cook">
+            <li class="trash"  style="cursor: pointer;">
                 <img src="public/images/boiling.png" alt="the ntrash" >
                 요리
             </li>
+        </div>
             <li class="folder" name="test" style="cursor: pointer;">
                 <img src="public/images/barrier.png" alt="it is a nfolder">
                 공사중
@@ -83,16 +97,19 @@
         <!-- Modal content -->
         <div class="modal-content">
             <span class="close">&times;</span>
-            <iframe style="display:block; width: 47vw; height: 25vh" src="https://ko.mbti.wikidok.net/wp-d/60afd3a75ab6d70c1e8a4852"></iframe>
+            <!-- <iframe style="display:block; width: 47vw; height: 25vh" src="https://ko.mbti.wikidok.net/wp-d/60afd3a75ab6d70c1e8a4852"></iframe> -->
         </div>
     </div>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.3.8/pixi.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="js/draganddrop.js"></script>
+<!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="js/draganddrop.js"></script> -->
+<script src="js/jquery.dad.js"></script>
+<script src="js/jquery.dad.min.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script language="javascript">
+    
     var urls = "http://t1.daumcdn.net/cafeattach/"
     var item1 = "";
     var item2 = "";
@@ -100,7 +117,10 @@
     var item4 = "";
     var item5 = "";
     $(function () {
-        $("#user_folder,#tooltip,#lotto,#myBtn,#game,#trash,#cook").draggable();
+        $('#user_folder,#tooltip,#lotto,#myBtn,#game,#trash,#cook').dad({
+            draggable: "#user_folder,#tooltip,#lotto,#myBtn,#game,#trash,#cook"
+});
+        // $("#user_folder,#tooltip,#lotto,#myBtn,#game,#trash,#cook").draggable();
         if(getParameters('name') != undefined){
         $('#user').html(getParameters('name')+"님의 정보");
         $('#profile').attr('src', urls + getParameters('img'));
