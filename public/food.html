@@ -15,21 +15,36 @@
     <main class="desktop">
     <div class="desktop_item">
         <ul>
-        <div id="trash">
-            <li class="trash"  style="cursor: pointer;">
-                <img src="./images/ntrash.png" alt="the ntrash" onclick="colorChange()">
-                휴지통
-            </li>
-        </div>
-        <div id="myBtn">
+        <div name="item">
             <li class="folder" style="cursor: pointer;">
-                <img src="./images/nfolder.png" alt="it is a nfolder">
-                도움말
+                <img id="item1" src="./images/nfolder.png" alt="the ntrash" >
+                아이템1
             </li>
         </div>
-        </ul>
-        <ul>
-
+        <div name="item">
+            <li class="folder" style="cursor: pointer;">
+                <img id="item2" src="./images/nfolder.png" alt="the ntrash" >
+                아이템2
+            </li>
+        </div>
+        <div name="item">
+            <li class="folder" style="cursor: pointer;">
+                <img id="item3" src="./images/nfolder.png" alt="the ntrash" >
+                아이템3
+            </li>
+        </div>
+        <div name="item">
+            <li class="folder" style="cursor: pointer;">
+                <img id="item4" src="./images/nfolder.png" alt="the ntrash" >
+                아이템4
+            </li>
+        </div>
+        <div name="item">
+            <li class="folder" style="cursor: pointer;">
+                <img id="item5" src="./images/nfolder.png" alt="the ntrash" >
+                아이템5
+            </li>
+        </div>
         </ul>
     </div>
     </main>
@@ -54,20 +69,10 @@
 <script src="/js/jquery.dad.js"></script>
 <script src="/js/jquery.dad.min.js"></script>
 <script language="javascript">
-    var urls = "http://t1.daumcdn.net/cafeattach/"
-    if(getParameters('item1') != undefined){
-        var item1 = urls + getParameters('item1')
-        var item2 = urls + getParameters('item2')
-        var item3 = urls + getParameters('item3')
-        var item4 = urls + getParameters('item4')
-        var item5 = urls + getParameters('item5')
-            $('#trash').attr('src', item1);
-        }else{
-            $('#user').html("잘못된 접근")
-    }
+    var urls = "//t1.daumcdn.net/cafeattach/"
     $(function () {
-        $('#trash,#myBtn').dad({
-            draggable: "#trash,#myBtn"
+        $("[name='item']").dad({
+            draggable: "[name='item']"
         });
         
         $('#start').click(function () {
@@ -82,14 +87,9 @@
     var span = document.getElementsByClassName("close")[0];
 
     // When the user clicks on the button, open the modal 
-    btn.onclick = function () {
-        modal.style.display = "block";
-        console.log(getParameters('name')); //파라미터를 때옴
-    }
+
     // When the user clicks on <span> (x), close the modal
-    span.onclick = function () {
-        modal.style.display = "none";
-    }
+
     // When the user clicks anywhere outside of the modal, close it
     var getParameters = function (paramName) {
         // 리턴값을 위한 변수 선언
@@ -108,6 +108,21 @@
         }
     };
 
+    if(getParameters('item1') != undefined){
+        var item1 = urls + getParameters('item1')
+        var item2 = urls + getParameters('item2')
+        var item3 = urls + getParameters('item3')
+        var item4 = urls + getParameters('item4')
+        var item5 = urls + getParameters('item5')
+            $('#item1').attr('src', item1);
+            $('#item2').attr('src', item2);
+            $('#item3').attr('src', item3);
+            $('#item4').attr('src', item4);
+            $('#item5').attr('src', item5);
+        }else{
+            $('#trash').html("잘못된 접근")
+    }
+    
     var clockTarget = document.getElementById("clock");
     function colorChange() {
         var color = ["#FC5C7D", "#6A82FB", "#38ef7d", "#fffbd5", "#b20a2c", "#CAC531"];
