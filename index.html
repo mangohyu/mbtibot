@@ -60,22 +60,30 @@
                 요리
             </li>
         </div>
-            <li class="folder" name="test" style="cursor: pointer;">
+        <div class="ready">
+            <li name="test" style="cursor: pointer;">
                 <img src="public/images/barrier.png" alt="it is a nfolder">
                 공사중
             </li>
-            <li class="game" name="test" style="cursor: pointer;">
+        </div>
+        <div class="ready">
+            <li name="test" style="cursor: pointer;">
                 <img src="public/images/barrier.png" alt="it is a nfolder">
                 공사중
             </li>
-            <li class="lotto" name="test" style="cursor: pointer;">
-                <img src="public/images/barrier.png" alt="it is a folder">
-                공사중
-            </li>
-            <li class="tooltip" name="test" style="cursor: pointer;">
+        </div>
+        <div class="ready">
+            <li name="test" style="cursor: pointer;">
                 <img src="public/images/barrier.png" alt="it is a nfolder">
                 공사중
             </li>
+        </div>
+        <div class="ready">
+            <li name="test" style="cursor: pointer;">
+                <img src="public/images/barrier.png" alt="it is a nfolder">
+                공사중
+            </li>
+        </div>
         </ul>
     </div>
     </main>
@@ -90,6 +98,9 @@
                 <img src="//developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_small.png" width="10px" />
                 </a>
             </li>
+            <li>
+                <input type="text" id="saturation-demo" class="form-control demo" onchange="coloron(value)" data-control="saturation" value="#0088cc">
+            </li>
             <li class="time" id="clock">오전 11:20</li>
         </ul>
     </footer>
@@ -103,8 +114,8 @@
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.3.8/pixi.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="js/draganddrop.js"></script> -->
+<script src="js/jquery.minicolors.js"></script>
+<link rel="stylesheet" href="js/jquery.minicolors.css">
 <script src="js/jquery.dad.js"></script>
 <script src="js/jquery.dad.min.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
@@ -117,9 +128,15 @@
     var item4 = "";
     var item5 = "";
     $(function () {
-        $('#user_folder,#tooltip,#lotto,#myBtn,#game,#trash,#cook').dad({
-            draggable: "#user_folder,#tooltip,#lotto,#myBtn,#game,#trash,#cook"
-});
+        $('#user_folder,#tooltip,#lotto,#myBtn,#game,#trash,#cook,.ready').dad({
+            draggable: "#user_folder,#tooltip,#lotto,#myBtn,#game,#trash,#cook,.ready"
+        });
+
+        $('.demo').minicolors();
+
+        $(".ready").on("dadDragStart", function (e, targetElement) {
+            alert("옮기지마세요!")
+        })
         // $("#user_folder,#tooltip,#lotto,#myBtn,#game,#trash,#cook").draggable();
         if(getParameters('name') != undefined){
             $('#user').html(getParameters('name')+"님의 정보");
@@ -167,14 +184,20 @@
             item5 = getParameters('item5');+
             $(location).attr('href', url + '?item1=' + item1 + '&item2=' + item2 + '&item3=' + item3 + '&item4=' + item4 + '&item5=' + item5);
         });
+
+       
     });
+    function coloron(color){
+        var bodyTag = document.getElementById("colorCont");
+        bodyTag.style.backgroundColor = color;
+    }
     // Get the modal
     var modal = document.getElementById('myModal');
     // Get the button that opens the modal
     var btn = document.getElementById("myBtn");
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
-
+    
     // When the user clicks on the button, open the modal 
     btn.onclick = function () {
         modal.style.display = "block";
@@ -244,6 +267,8 @@
         // setInterval은 첫번째 파라메터는 함수이고 두번째는 시간인데 밀리초단위로 받습니다. 1000 = 1초 
     }
     init();
+
+    
 </script>
 <script type="text/javascript">
     //<![CDATA[
