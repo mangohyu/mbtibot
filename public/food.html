@@ -108,9 +108,6 @@
     if(getParameters('item'+i) != "undefined" && getParameters('item'+i) != undefined){
         var item = urls + getParameters('item'+i);
             $('#item'+i).attr('src', item);
-            $('#item'+i).dad({
-            draggable: "#item"+i
-            });
         }else{
             $('div[name="item"]').css("display","none;");
         }
