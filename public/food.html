@@ -70,11 +70,7 @@
 <script src="/js/jquery.dad.min.js"></script>
 <script language="javascript">
     var urls = "http://t1.daumcdn.net/cafeattach/"
-    $(function () {
-        $("div[name='item']").dad({
-            draggable: "[name='item']"
-        });
-        
+    $(function () {        
         $('#start').click(function () {
 
         });
@@ -112,7 +108,9 @@
     if(getParameters('item'+i) != "undefined" && getParameters('item'+i) != undefined){
         var item = urls + getParameters('item'+i);
             $('#item'+i).attr('src', item);
-
+            $('#item'+i).dad({
+            draggable: "#item"+i
+            });
         }else{
             $('div[name="item"]').css("display","none;");
         }
