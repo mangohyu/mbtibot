@@ -128,8 +128,8 @@
     var item4 = "";
     var item5 = "";
     $(function () {
-        $('#user_folder,#tooltip,#lotto,#myBtn,#game,#trash,#cook').dad({
-            draggable: "#user_folder,#tooltip,#lotto,#myBtn,#game,#trash,#cook"
+        $('#user_folder,#tooltip,#lotto,#myBtn,#game,#trash,#cook,#pet').dad({
+            draggable: "#user_folder,#tooltip,#lotto,#myBtn,#game,#trash,#cook,#pet"
         });
 
         $('.demo').minicolors();
@@ -141,8 +141,6 @@
             if(getParameters('petnm') != undefined){
                 $('#petnm').html(getParameters('petnm'));
                 $('#petimg').attr('src', urls + getParameters('pet'));
-                $("#pet").animate({left: "+=500"}, 2000);
-                $("#pet").animate({left: "-=300"}, 1000);
             }
         }else{
             $('#user').html("잘못된 접근")
