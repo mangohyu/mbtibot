@@ -128,10 +128,6 @@
     var item4 = "";
     var item5 = "";
     $(function () {
-        $(document).ready(function() {
-        $("#cook").animate({left: "+=500"}, 2000);
-        $("#cook").animate({left: "-=300"}, 1000);
-    });
         $('#user_folder,#tooltip,#lotto,#myBtn,#game,#trash,#cook').dad({
             draggable: "#user_folder,#tooltip,#lotto,#myBtn,#game,#trash,#cook"
         });
@@ -142,8 +138,12 @@
         if(getParameters('name') != undefined){
             $('#user').html(getParameters('name')+"님의 정보");
             $('#profile').attr('src', urls + getParameters('img'));
-            $('#petnm').html(getParameters('petnm'));
-            $('#petimg').attr('src', urls + getParameters('pet'));
+            if(getParameters('petnm') != undefined){
+                $('#petnm').html(getParameters('petnm'));
+                $('#petimg').attr('src', urls + getParameters('pet'));
+                $("#pet").animate({left: "+=500"}, 2000);
+                $("#pet").animate({left: "-=300"}, 1000);
+            }
         }else{
             $('#user').html("잘못된 접근")
         }
@@ -159,7 +159,7 @@
             item2 = getParameters('item2');
             item3 = getParameters('item3');
             item4 = getParameters('item4');
-            item5 = getParameters('item5');+
+            item5 = getParameters('item5');
             $(location).attr('href', url + '?item1=' + item1 + '&item2=' + item2 + '&item3=' + item3 + '&item4=' + item4 + '&item5=' + item5);
         });
 
